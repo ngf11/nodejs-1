@@ -1,0 +1,9 @@
+//chapter 1
+
+-- How does nodeJS deffer form vanilla JS
+ - nodeJS runs on the server not the browser(Backend not the frontend),
+ - the consol is now on the terminal window
+ - there is a golbol object insted of a window object
+ - has common core modules the we will explain.(these modules relate to the file system anD the OS).
+ to import these we use commonJs modules insted of ES6 modules
+ - nodeJS is missing some of the JS API's like fetch. we can always pull in packeges into nodeJS
