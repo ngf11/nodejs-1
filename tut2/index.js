@@ -18,4 +18,10 @@ fs.readFile("./file/started.txt", "utf8", (err, data) => {
 // });
 //by adding the utf8 you can just consol.log(data)
 
-// 22.09 min
+// notice the throw error inside the if statment. If we get an uncought. we need to catch that
+//exit on uncougth error
+process.on("uncaughtException", (err) => {
+  console.error(`There was an uncaught Error: ${err}`);
+  process.exit(1);
+});
+// If we have an uncaught error. we chould exit. Here we lisenting to this uncaughtExcption with process. process is one of those vaules that node has. We do need to inport it. We lisent to an uncaughtExcption we pass in an error to the callback and we are login the error
