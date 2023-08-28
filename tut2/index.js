@@ -79,18 +79,39 @@ fs.writeFile(
 );
 
 // by coping the readFile and changing it to the writeFile--changing the file name any name. removing the 'utf8' because by default is 'utf8'-- then we add the mesege to the file in this case 'Nice to meet you' --the callback will only have an error not the data we ar not reading data. in the consol.log we are removing the data. and add in this case "Write Complete". we can save this and we can run this code.now the file replay.txt is created with text inside.
+// now the file replay.txt is created.
 
 fs.appendFile(
-  path.join(__dirname, "file", "reply.txt"),
-  "Nice to meet you",
+  path.join(__dirname, "file", "test.txt"),
+  "Testing Text",
   (err) => {
     if (err) throw err;
-    console.log("Write Complete");
+    console.log("Append Complete");
   }
 );
-// we copy the write file. and changing it to append file. Here we can add more content to it.
+
+// we copy the write file. and changing it to appendFfile. Here we can add more content to an existent file or creat a new file. let change the reply.txt to test.txt/ to text.txt change the content "Testing Text". In the console.log("Append Completed"). Run the code.. alod here if we look at the terminal we cna see that the readFile finish last duo the asynchronous nature of node. Append file will modify an existing file  and can append content to it or creat a new file if it dosen't exist. Duo to the asynchronous nature of nodejs and these diferent methods we are calling
 process.on("uncaughtException", (err) => {
   console.error(`There was an uncaught Error: ${err}`);
   process.exit(1);
 });
-// now the file replay.txt is created.
+
+// if we wanted to modify a file a file that we created. it will be better to put appendFile inside the callback of a write me file
+
+fs.writeFile(
+  path.join(__dirname, "file", "user.txt"),
+  "Hi, nico. Keep going",
+  (err) => {
+    if (err) throw err;
+    console.log("Write Complted");
+    fs.appendFile(
+      path.join(__dirname, "file", "user.txt"),
+      "\n\n You will get what you want",
+      (err) => {
+        if (err) throw err;
+        console.log("Append Completed");
+      }
+    );
+  }
+);
+//min 28:30
