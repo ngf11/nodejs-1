@@ -155,15 +155,56 @@ process.on("uncaughtException", (err) => {
 // to catch erros catch(err){consol.error(err)}.
 // we can allso throw the error insed the catch with an if statment but the error is actully being cought inside the catch
 //isnde of try{} we are going to define const data = await fsPromises.readfile()
-//inside we need to specify the file path
+//inside we need to specify the file pathfsPromises.readFile(path.join(__dirname, "file", "started.txt"),"utf8");  now that we have the data lets consol.log(data) inside try{}. Then lets call fileOps(); at the end and run the terminal
+// now lets add another await inside of try await fsPromises
+//now we will write a file. this file wil be a promise write. will add the same path but will change the file.txt name (__dirname.join("file", "promisewrite.txt")). After that we want to pass in the data that we just read (__dirname.join("file", "promisewrite.txt"), data). now let copy what we just wrote and append to the file.await fsPromises.appendFile(__dirname.join("file", "promisewrite.txt"),"Nice to meet you"); But this time we write our mesege wher the data is
+// now lets copy and past. change the append to rename. Here insted of the text we are coping  the the file path  path.join(__dirname, "file", "started.txt") and pasting it to where data or message goes
+//fsPromises.rename(__dirname.join("file", "promisewrite.txt"),path.join(__dirname, "file", "promiseComplet.txt"));
+//what we are doing here is taking the data from the started  and we are writing a new file promisWrite .hen we are appending to the file. Then we are renaming the file
+// now let copy and past at the end const data = await fsPromises.readFile(path.join(__dirname, "file", "started.txt"),"utf8");console.log(data); and change the  const data to const new data also change the name of the file "started.txt" to "promiseComplet.txt"
+// as you can see we have different operations happenig her. we are  we are reding data from a file readFile. Then we are writing to a new file writefile "promisewritre.txt". Then we are appending text to that new file. Then we are renaming to that new file  the we are reading that new file and loggin the newData from that file. now run this in terminal/
+//Hi, my Name is nico. (here we have the original content of the file )
+// Hi, my Name is nico.
+//here we have(the new file with the new content add)
+// Nice, to meet you
+// also we cabn see our new file promis completed.
+
+// now let go bac and add one more thing let copy await fsPromises.writeFile(path.join(__dirname, "file", "promisewrite.txt"),data ); and paste above  the writeFile  and change the writeFile to unlink after that remove the data because unlink is a delete. we are deleting the orgin al file  that is called "Statrted.txt"
+//Now we are reading the file. loging the data to the console. then delteing that file and the creating that new file.
+//note** if we are rerunning it with the unlink delte promiseComplete.txt and run agian
+//Now after runing this in the terminal. we have deleted the started text
+
 const fsPromises = require("fs").promises;
+const { fdatasync, writeFile } = require("fs");
 const path = require("path");
 
 const fileOps = async () => {
   try {
-    const data = await fsPromises.readFile(path.join());
+    const data = await fsPromises.readFile(
+      path.join(__dirname, "file", "started.txt"),
+      "utf8"
+    );
+    console.log(data);
+    await fsPromises.unlink(path.join(__dirname, "file", "started.txt"), data);
+    await fsPromises.writeFile(
+      path.join(__dirname, "file", "promisewrite.txt"),
+      data
+    );
+    await fsPromises.appendFile(
+      path.join(__dirname, "file", "promisewrite.txt"),
+      "\n\n Nice, to meet you"
+    );
+    await fsPromises.rename(
+      path.join(__dirname, "file", "promisewrite.txt"),
+      path.join(__dirname, "file", "promiseComplet.txt")
+    );
+    const newData = await fsPromises.readFile(
+      path.join(__dirname, "file", "promiseComplet.txt"),
+      "utf8"
+    );
+    console.log(newData);
   } catch (err) {
     console.error(err);
   }
 };
-// 32min
+fileOps();
