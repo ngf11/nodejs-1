@@ -44,3 +44,6 @@ console.log(__filename);
 
 // console.log(path.parse(__filename));
 // const pase = path.parse(__filename);
+
+
+//chapter 2
