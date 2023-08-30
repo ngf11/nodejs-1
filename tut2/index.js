@@ -208,3 +208,5 @@ const fileOps = async () => {
   }
 };
 fileOps();
+
+// now we are going to create a new js file called stream.js
