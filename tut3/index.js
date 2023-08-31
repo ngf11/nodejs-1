@@ -91,4 +91,19 @@ console.log(format(new Date(), "yyyyMMdd\tHH:MM:ss"));
 console.log(uuid());
 
 // now we can see in the termianl that we have the date  and uuid generated and if we do any changes it will genarate a new id. This could be really useful if we were to log such as an event, error, request. That we might write to a log file.
-// you can search for this packges 1.02 hhmm
+// you can search for this packges in npm website
+// now lets take look at the package.json theres a little more detail we need to look at. if look at a t the packages we installed under dependecis or dev depedecies  we get the sematic version numberes ie. "uuid": "^9.0.0"
+// the first number means a majore version
+// the scond number means a minor versio
+// the third number means a patch
+// the ^ means allow an update to the minor version and the patch if needed
+// if we have ~ at the begingin this means go ahead and update a patch version but do not update a minor version
+// if we remove all the number and left a "*" go ahead and update everythig all the time. this is not too safe all though you might see it
+// is also good to know that when istall a package you can also istall a specific version ie. "npm i uuid@9.0.0" this will install this specific verison. when you istall any package it will it will istal the laest package but it will not ^ but it will not istall any major updates just minors and patches.
+
+// if you wanted to check for updates you can run "npm update" and this will cheack for any updates in your packages
+
+// if we need to unistall anythig we can use
+//"npm unistall" "npm un " "npm rm"
+// in this case we can use "npm rm nodemon" but nodemon sice it is a devdependeciy you need to add the -D flag "npm rm nodemon -D"
+// if will look at the script{} in dev it will not remove the nodemon index you will have to do it your self. but it will remove it form  the devdependecies{}.so if we remove a package it does not remove it from your script. You will have to do it manually
