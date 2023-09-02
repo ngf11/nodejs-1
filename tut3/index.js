@@ -42,4 +42,5 @@ but we  haven created our file with logs/eventsLog.txt
     the error will despear 
 
 */
-//min 1:20:37
+// Now if we run it in the terminal we iwll get the log floder and eventLog.txt file. if we runthis agian we shoudl make a change to the file and any changes even a comment will log an event
+// this is how you creat a web emmiter. When we creat a web server we will want to summit event to what request came in.

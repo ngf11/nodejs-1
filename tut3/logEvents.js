@@ -126,7 +126,7 @@ const logevent = async (message) => {
   //then we are going to have another defenition called const logitem another tamplate litteral `${dateTime}\t{uuid()}` we call on the uuid() to get a unique id for each log event then one more tab \t ${messege}
   // now that we have the log item lets log that to the console. then we need a try{}catch{} block to get to the async await porsion of this
   const dateTime = `${format(new Date(), "yyyyMMdd\tHH:MM:ss")}`;
-  const logitem = `${dateTime}\t${uuid()}\t${message}`;
+  const logitem = `${dateTime}\t${uuid()}\t${message}\n`;
   console.log(logitem);
   try {
     // here we await fsPromises and appendFile or creat a file if it does not exist-- then we use path.join(__driname,) we are creating a new "logs" directory. Inside of the directory we creat a "eventsLog.txt" file and we want the logTime to be log in there. we can save this much. There could be something that could cause an error. But we will leave it like this to see what will cause an error.
